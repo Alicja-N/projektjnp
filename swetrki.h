@@ -27,5 +27,6 @@ public:
     string name;
     bool IsAuthenticated;
     bool IsAdmin;
+    User() : isAuthenticated(false), isAdmin(false) {}
 };
 
