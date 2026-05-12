@@ -1,7 +1,8 @@
+using std::string;
 class user{
 public:
-    char* login;
-    char* name;
+    string login;
+    string name;
     bool IsAuthenticated;
     bool IsAdmin;
 };
