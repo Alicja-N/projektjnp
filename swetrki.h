@@ -1,41 +1,26 @@
 using namespace std;
 #include <iostream>
+#include <vector>
+using std::vector;
 
 class Film{
 public:
-    string link;
-    string tytuł;
-    string hasłakluczowe;
-    void dodajfilm();
-private:
-    void dodajtytuł();
-    void dodajlink();
-    void dodajhasłakluczowe();
+    char* title;
+    char* keywords;
+    vector<Review> Reviews;
+    bool AddReview(Review& r);
 };
-class Recenzje{
+class Review{
 public:
-    int ocena;
-    string tekst;
-    string autor;
-private:
-    void dodajrecenzje();
+    int rank;
+    char* text;
+    char* autor;
 };
-class User{
-protected:
-    string username;
-    string email;
-
-};
-class Viewer: public User{
-
-};
-class Logged: public Viewer{
+class user{
 public:
-    void dodajRecenzje(Film& film, string tresc, int ocena);
-
+    char* login;
+    char* name;
+    bool IsAuthenticated;
+    bool IsAdmin;
 };
 
-class Admin: public Logged{
-    void usunFilm(int id);
-    void zbanujUzytkownika(string nick);
-};

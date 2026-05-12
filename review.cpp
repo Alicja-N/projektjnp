@@ -5,6 +5,3 @@ public:
     char* autor;
     
 };
-
-
-
