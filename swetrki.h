@@ -4,6 +4,8 @@ using namespace std;
 using std::vector;
 using std::string;
 
+enum class rank { FATALNY = 1, SLABY = 2, SREDNI = 3, DOBRY = 4,REWELACYJNY = 5};
+
 class Film{
     string title;
     string keywords;
@@ -14,7 +16,7 @@ class Film{
 };
 class Review{
 public:
-    int rank;
+    enum rank;
     string text;
     string autor;
 };
