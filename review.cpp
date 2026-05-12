@@ -1,7 +1,8 @@
+using std::string;
 class Review{
 public:
     int rank;
-    char* text;
-    char* autor;
+    string text;
+    string autor;
     
 };
