@@ -3,6 +3,7 @@
 using  std::vector;
 using std::string;
 class Film{
+public:
     string title;
     string keywords;
     vector<Review> Reviews;

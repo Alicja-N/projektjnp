@@ -3,10 +3,9 @@ using namespace std;
 #include <vector>
 using std::vector;
 using std::string;
-
 enum class rank { FATALNY = 1, SLABY = 2, SREDNI = 3, DOBRY = 4,REWELACYJNY = 5};
-
 class Film{
+public:
     string title;
     string keywords;
     vector<Review> Reviews;
@@ -27,6 +26,6 @@ public:
     string name;
     bool IsAuthenticated;
     bool IsAdmin;
-    User() : isAuthenticated(false), isAdmin(false) {}
+    user() : IsAuthenticated(false), IsAdmin(false) {}
 };
 
