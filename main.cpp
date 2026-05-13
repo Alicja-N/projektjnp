@@ -28,12 +28,16 @@ int main(){
         cout << "Wybor: ";
         cin >> wybor;
 
-        if (wybor == 1) {
-            for (auto &f : bazaFilmow) {
-                cout << "\nFilm: " << f.title << " [" << f.keywords << "]\n";
-                f.ViewReviews();
+        int len = bazaFilmow.size();
+        if (wybor==1) {
+            for (int i=0; i<len; i++) {
+                Film &film = bazaFilmow[i];
+                cout<< "Tytuł"<< film.title<< endl;
+                cout<<"Słowa kluczowe"<<film.keywords<<endl;
+                film.ViewReviews();
+
             }
-        } 
+        }
         else if (wybor == 2) {
             string tresc;
             int ocenaNum;
