@@ -28,10 +28,13 @@ private:
     string name;
     bool isAuthenticated;
     bool isAdmin;
+    bool isUserAuthenticated() const {
+        return isAuthenticated;
+    }
 public:
     User(std::string uLogin, std::string uName);
     void loginUser();
     bool checkAdmin() const;
-    std::string getLogin() const;
+    string getLogin() const;
 };
 
