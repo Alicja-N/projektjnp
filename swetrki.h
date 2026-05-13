@@ -28,11 +28,12 @@ private:
     string name;
     bool isAuthenticated;
     bool isAdmin;
+    
+public:
+    User(string uLogin, string uName);
     bool isUserAuthenticated() const {
         return isAuthenticated;
     }
-public:
-    User(std::string uLogin, std::string uName);
     void loginUser();
     bool checkAdmin() const;
     string getLogin() const;
