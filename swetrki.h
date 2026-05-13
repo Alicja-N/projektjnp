@@ -20,16 +20,18 @@ public:
     bool AddReview(Review& r);
     bool RemoveReview(Review& r);
     bool ViewReviews();
+    int getReviewsCount() const {
+        return Reviews.size();
+    }
 };
 
 class User{
-private:
+public:
     string login;
     string name;
     bool isAuthenticated;
     bool isAdmin;
     
-public:
     User(string uLogin, string uName);
     bool isUserAuthenticated() const {
         return isAuthenticated;
