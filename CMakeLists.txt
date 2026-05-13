@@ -22,6 +22,7 @@ add_executable(run_tests
     tests.cpp 
     user.cpp 
     review.cpp
+    functions.cpp
 )
 target_include_directories(backend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 find_package(GTest REQUIRED)
