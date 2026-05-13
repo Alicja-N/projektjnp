@@ -32,8 +32,8 @@ int main(){
         if (wybor==1) {
             for (int i=0; i<len; i++) {
                 Film &film = bazaFilmow[i];
-                cout<< "Tytuł"<< film.title<< endl;
-                cout<<"Słowa kluczowe"<<film.keywords<<endl;
+                cout<< "Tytuł: "<<film.title<< endl;
+                cout<<"Słowa kluczowe: "<<film.keywords<<endl;
                 film.ViewReviews();
 
             }
