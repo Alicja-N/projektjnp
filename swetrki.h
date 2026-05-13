@@ -3,7 +3,15 @@ using namespace std;
 #include <vector>
 using std::vector;
 using std::string;
-enum class rank { FATALNY = 1, SLABY = 2, SREDNI = 3, DOBRY = 4,REWELACYJNY = 5};
+enum class Rank { FATALNY = 1, SLABY = 2, SREDNI = 3, DOBRY = 4,REWELACYJNY = 5};
+
+class Review{
+public:
+    Rank rating;
+    string text;
+    string autor;
+};
+
 class Film{
 public:
     string title;
@@ -13,19 +21,17 @@ public:
     bool RemoveReview(Review& r);
     bool ViewReviews();
 };
-class Review{
-public:
-    enum rank;
-    string text;
-    string autor;
-};
 
-class user{
-public:
+class User{
+private:
     string login;
     string name;
-    bool IsAuthenticated;
-    bool IsAdmin;
-    user() : IsAuthenticated(false), IsAdmin(false) {}
+    bool isAuthenticated;
+    bool isAdmin;
+public:
+    User(std::string uLogin, std::string uName);
+    void loginUser();
+    bool checkAdmin() const;
+    std::string getLogin() const;
 };
 
