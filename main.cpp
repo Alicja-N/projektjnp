@@ -23,6 +23,7 @@ int main(){
         cout << "Zalogowany jako: " << aktualnyUzytkownik.getLogin() << endl;
         cout << "1. Wyswietl filmy i recenzje\n";
         cout << "2. Dodaj recenzje do filmu\n";
+        cout << "3. Dodaj nowy film do bazy\n";
         cout << "0. Wyjdz\n";
         cout << "Wybor: ";
         cin >> wybor;
@@ -56,6 +57,18 @@ int main(){
                 bazaFilmow[filmIdx].AddReview(nowa);
                 cout << "Dodano!\n";
             }
+        }
+        else if (wybor == 3) {
+            Film nowyFilm;
+            cout << "Podaj tytul filmu: ";
+            cin.ignore(); // czyścimy bufor po cin >> wybor
+            getline(cin, nowyFilm.title);
+    
+            cout << "Podaj slowa kluczowe: ";
+            getline(cin, nowyFilm.keywords);
+
+            bazaFilmow.push_back(nowyFilm);
+            cout << "Film zostal dodany do bazy!\n";
         }
     } while (wybor != 0);
 
