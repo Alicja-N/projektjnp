@@ -3,11 +3,12 @@ using namespace std;
 #include "swetrki.h"
 
 int main(){
-    // 1. Tworzymy użytkownika (na razie na sztywno)
-    User aktualnyUzytkownik("admin123", "Kamil");
-    aktualnyUzytkownik.loginUser(); // Logujemy go
-    // aktualnyUzytkownik.setAdminStatus(true); // Opcjonalnie dajemy admina
-
+    cout<<"Login: "<<endl;
+    cin>> login;
+    cout<<"Hasło: "<<endl;
+    cin>> haslo;
+    User AktualnyUser(login, haslo);
+    AktualnyUser.loginUser();
     // 2. Tworzymy bazę filmów
     vector<Film> bazaFilmow;
 
@@ -16,7 +17,7 @@ int main(){
     f1.title = "Incepcja";
     f1.keywords = "sny, sci-fi";
     bazaFilmow.push_back(f1);
-
+    //if isUserAuthenticated(AktualnyUser) {
     int wybor;
     do {
         cout << "\n--- SYSTEM RECENZJI FILMOWYCH ---\n";
@@ -77,4 +78,5 @@ int main(){
     } while (wybor != 0);
 
     return 0;
+    //}
 }
