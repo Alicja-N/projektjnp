@@ -31,8 +31,6 @@ public:
     string name;
     bool isAuthenticated;
     bool isAdmin;
-    
-    User(string uLogin, string uName);
     bool isUserAuthenticated() const {
         return isAuthenticated;
     }
