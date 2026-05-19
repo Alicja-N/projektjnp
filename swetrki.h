@@ -43,6 +43,8 @@ class User{
 public:
     string login;
     string name;
+    vector<User> RegisteredUsers;
+    vector<User> RegisteredAdmins;
     bool isAuthenticated;
     bool isAdmin;
     bool isUserAuthenticated() const {
