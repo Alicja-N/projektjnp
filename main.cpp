@@ -51,6 +51,7 @@ int main(){
                 cout << FilmsBase[Index].keywords<<endl;
                 cout << "1.Wyświel recenzje"<<endl;
                 cout << "2.Dodaj recenzje"<<endl;
+                cout << "3.Wyświetl recenzje"<<endl;
                 cin >> Choice2;
                     switch(Choice2){
                         case 1:
@@ -58,6 +59,9 @@ int main(){
                             break;
                         case 2:
                             FilmsBase[Index].AddReview();
+                            break;
+                        case 3:
+                            FilmsBase[Index].RemoveReview();
                             break;
                         default:
                             cout<< "Podaj prawidłowy wybór"<< endl;
