@@ -28,6 +28,25 @@ public:
         Reviews.push_back(r);
         return true;
     }
-    bool RemoveReview(Review& r);
-    bool ViewReviews();
+    bool RemoveReview(Review& r){
+        for(int i=0;i<Reviews.size();i++){
+            if(Reviews[i].author==r.author){
+                Reviews.erase(Reviews.begin()+i);
+                return true;
+            }
+        }
+        return false;
+    };
+    bool ViewReviews(){
+        if (Reviews.empty()) {
+        cout << "Brak recenzji dla filmu: " << title << endl;
+        return false;
+    }
+    for (const auto& r : Reviews) {
+        cout << "Autor: " << r.author;
+        cout << " | Ocena: " << r.rating<< endl; 
+        cout << " | Tresc: " << r.text << endl;
+    }
+    return true;
+    }
 };
