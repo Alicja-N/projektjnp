@@ -8,10 +8,15 @@ int main(){
     string login;
     string password;
     User ThisUser;
-    string Title;
+    string search;
+    string NewTitle;
+    string NewKeywords;
     int Choice;
     int Index;
     int Choice2;
+    int index;
+    bool exists = false;
+
     //logowanie
     cout<<"Login: "<<endl;
     cin>> login;
@@ -19,30 +24,25 @@ int main(){
     cin>> password;
 
     ThisUser.loginUser();
-    // 2. Tworzymy bazę filmów
+    // baza filmow - wektor z obiektami klasy Film
     vector<Film> FilmsBase;
-    
-
-    // Dodajmy testowy film
-    Film f1;
-    f1.title = "Incepcja";
-    f1.keywords = "sny, sci-fi";
-    FilmsBase.push_back(f1);
-    //if isUserAuthenticated(ThisUser) {
-    
+    int len = FilmsBase.size();
     do {
-        cout << "\n--- SYSTEM RECENZJI FILMOWYCH ---\n";
+        cout << "\n--- KNITTED SWEATERS ---\n";
         cout << "Zalogowany jako: " << ThisUser.getLogin() << endl;
         cout << "1. Wyswietl filmy\n";
         cout << "2. Dodaj nowy film do bazy\n";
+        cout << "3.Wyszukaj film\n";
         cout << "0. Wyjdz\n";
         cout << "Wybor: ";
         cin >> Choice;
 
-        int len = FilmsBase.size();
+        
         switch (Choice) {
+            case 0:
+            {};
             case 1:
-                for (int i=0; i<len; i++) {
+                {for (int i=0; i<len; i++) {
                     cout<< "Tytuł: "<<FilmsBase[i].title<< endl;
                 }
                 cout << "wybierz indeks filmu: ";
@@ -56,24 +56,43 @@ int main(){
                         case 1:
                             FilmsBase[Index].ViewReviews();
                         case 2:
-                            FilmsBase[Index].AddReview(/*???idk*/);
+                            FilmsBase[Index].AddReview();
+                        default:
+                            cout<< "Podaj prawidłowy wybór"<< endl;
                     }
-
+                };
             case 2 :
-                
+                {cout << "Podaj tytuł: "<<endl;
+                cin >> NewTitle;
+                cout << "Podaj słowa kluczowe: " << endl;
+                cin >> NewKeywords;
+                Film f1;
+                    f1.title = NewTitle;
+                    f1.keywords = NewKeywords;
+                    FilmsBase.push_back(f1);
+                };
+            case 3:
+                {cout<<"Wyszukaj tytuł filmu lub słowa kluczowe: "<<endl;
+                cin>>search;
+                for (int i=0;i<len; i++){
+                    if (regex_match(FilmsBase[i].title, regex("*"+search+"*"))||regex_match(FilmsBase[i].keywords, regex ("*"+search+"*"))){
+                        cout<< i <<"."<< FilmsBase[i].title<< endl;
+                        exists = true;
+                    }
+                };
+                if (exists == false){
+                    cout<< "Taki film nie istnieje w bazie"<< endl;
+                }else {
+                cout<<"podaj indeks szukanego filmu: "<<endl;
+                cin>>index;
+                cout<<FilmsBase[index].title<<endl;
+                cout<<FilmsBase[index].keywords<<endl;
+                };
+                };
             default:
-                cout<< "Podaj prawidłowy wybór"<< endl;
+                {cout<< "Podaj prawidłowy wybór"<< endl;
+                };
         }      
     } while (Choice != 0);
     return 0;
-    //}
-    /* dodawanie recenzji do filmu 
-    cout<<"Podaj tytuł filmu: "<<endl;
-                cin>>Title;
-                for (int i=0;i<len; i++){
-                    if (regex_match(FilmsBase[i].title, regex("*"+Title+"*"))){
-                        cout<< i <<"."<< FilmsBase[i].title<< endl;
-                    }
-                }
-                cout<<"Wybierz indeks filmu: "<<endl*/
 }
