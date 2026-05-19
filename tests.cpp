@@ -5,13 +5,13 @@
 
 
 TEST(UserTest, Initialization) {
-    User u("admin", "Admin");
+    User u{"admin", "Admin"};
     EXPECT_EQ(u.getLogin(), "admin");
     EXPECT_FALSE(u.checkAdmin());
 }
 
 TEST(UserTest, LoginFunctionality) {
-    User u("user1", "Kowalski");
+    User u{"user1", "Kowalski"};
     EXPECT_FALSE(u.isUserAuthenticated());
     u.loginUser();
     EXPECT_TRUE(u.isUserAuthenticated());
@@ -26,9 +26,9 @@ TEST(FilmTest, AddReviewIncreasesCount) {
     EXPECT_EQ(f.getReviewsCount(), 0);
 
     Review r1;
-    r1.autor = "Ania";
+    r1.author = "Ania";
     r1.text = "Mega film!";
-    r1.rating = Rank::DOBRY;
+    r1.rating = 4;
 
     f.AddReview(r1);
 

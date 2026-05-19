@@ -8,8 +8,11 @@ public:
     string keywords;
     vector<Review> Reviews;
     bool AddReview(){
+        int rank;
+        string author;
+        string text;
         cout<< "Podaj ocenę w skali 1-5"<< endl;
-        cin>> rank;
+        cin >> rank;
         cout << "Napisz treść renezji:"<< endl;
         cin>> text;
         cout<< "Podaj autora recenzji:"<< endl;
@@ -19,7 +22,12 @@ public:
             r.text = text;
             r.author = author;
             Reviews.push_back(r);
+        return true;
     };
+    bool AddReview(const Review& r){
+        Reviews.push_back(r);
+        return true;
+    }
     bool RemoveReview(Review& r);
     bool ViewReviews();
 };

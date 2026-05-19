@@ -4,9 +4,6 @@ using namespace std;
 using std::vector;
 using std::string;
 //enum class Rank { FATALNY = 1, SLABY = 2, SREDNI = 3, DOBRY = 4,REWELACYJNY = 5};
-int rank;
-string author;
-string text;
 class Review{
 public:
     int rating;
@@ -20,6 +17,9 @@ public:
     string keywords;
     vector<Review> Reviews;
     bool AddReview(){
+        int rank;
+        string author;
+        string text;    
         cout<< "Podaj ocenę w skali 1-5"<< endl;
         cin>> rank;
         cout << "Napisz treść renezji:"<< endl;
@@ -31,6 +31,7 @@ public:
             r.text = text;
             r.author = author;
             Reviews.push_back(r);
+        return true;
     };;
     bool RemoveReview(Review& r);
     bool ViewReviews();
@@ -43,8 +44,6 @@ class User{
 public:
     string login;
     string name;
-    vector<User> RegisteredUsers;
-    vector<User> RegisteredAdmins;
     bool isAuthenticated;
     bool isAdmin;
     bool isUserAuthenticated() const {

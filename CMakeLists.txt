@@ -17,13 +17,16 @@ add_executable(backend
     main.cpp 
     user.cpp 
     review.cpp 
-    functions.cpp)
+    functions.cpp
+    swetrki.h)
 add_executable(run_tests 
     tests.cpp 
     user.cpp 
     review.cpp
     functions.cpp
+    swetrki.h
 )
 target_include_directories(backend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(run_tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 find_package(GTest REQUIRED)
 target_link_libraries(run_tests GTest::gtest_main)
