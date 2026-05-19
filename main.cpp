@@ -15,7 +15,7 @@ int main(){
     int Index;
     int Choice2;
     int index;
-    bool exists = false;
+    bool exists;
 
     //logowanie
     cout<<"Login: "<<endl;
@@ -26,7 +26,6 @@ int main(){
     ThisUser.loginUser();
     // baza filmow - wektor z obiektami klasy Film
     vector<Film> FilmsBase;
-    int len = FilmsBase.size();
     do {
         cout << "\n--- KNITTED SWEATERS ---\n";
         cout << "Zalogowany jako: " << ThisUser.getLogin() << endl;
@@ -40,13 +39,14 @@ int main(){
         
         switch (Choice) {
             case 0:
-            {};
+                break;
             case 1:
-                {for (int i=0; i<len; i++) {
+                {for (int i=0; i<FilmsBase.size(); i++) {
                     cout<< "Tytuł: "<<FilmsBase[i].title<< endl;
                 }
                 cout << "wybierz indeks filmu: ";
                 cin >> Index;
+                if (Index >= 0 && Index < FilmsBase.size()) {
                 cout << FilmsBase[Index].title<< endl;
                 cout << FilmsBase[Index].keywords<<endl;
                 cout << "1.Wyświel recenzje"<<endl;
@@ -55,11 +55,18 @@ int main(){
                     switch(Choice2){
                         case 1:
                             FilmsBase[Index].ViewReviews();
+                            break;
                         case 2:
                             FilmsBase[Index].AddReview();
+                            break;
                         default:
                             cout<< "Podaj prawidłowy wybór"<< endl;
+                            break;
                     }
+                }else{
+                    cout<< "niepoprawny indeks"<< endl;
+                }
+                break;
                 };
             case 2 :
                 {cout << "Podaj tytuł: "<<endl;
@@ -70,15 +77,17 @@ int main(){
                     f1.title = NewTitle;
                     f1.keywords = NewKeywords;
                     FilmsBase.push_back(f1);
+                break;
                 };
             case 3:
-                {cout<<"Wyszukaj tytuł filmu lub słowa kluczowe: "<<endl;
+                {exists = false;
+                cout<<"Wyszukaj tytuł filmu lub słowa kluczowe: "<<endl;
                 cin>>search;
-                for (int i=0;i<len; i++){
-                    if (regex_match(FilmsBase[i].title, regex("*"+search+"*"))||regex_match(FilmsBase[i].keywords, regex ("*"+search+"*"))){
+                for (int i=0;i<FilmsBase.size(); i++){
+                    if (FilmsBase[i].title.find(search) != string::npos||FilmsBase[i].keywords.find(search) != string::npos){
                         cout<< i <<"."<< FilmsBase[i].title<< endl;
                         exists = true;
-                    }
+                    };
                 };
                 if (exists == false){
                     cout<< "Taki film nie istnieje w bazie"<< endl;
@@ -88,10 +97,13 @@ int main(){
                 cout<<FilmsBase[index].title<<endl;
                 cout<<FilmsBase[index].keywords<<endl;
                 };
+                break;
                 };
             default:
                 {cout<< "Podaj prawidłowy wybór"<< endl;
+                break;
                 };
+
         }      
     } while (Choice != 0);
     return 0;
