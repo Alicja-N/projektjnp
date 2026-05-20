@@ -25,7 +25,7 @@ public:
 class User{
 public:
     string login;
-    string name;
+    string password;
     vector<User> RegisteredAdmins;
     vector<User> RegisteredUsers;
     bool isAuthenticated;
