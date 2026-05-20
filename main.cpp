@@ -112,7 +112,7 @@ int main(){
                 Thisuser User;
                     Thisuser.login = login;
                     Thisuser.password = password; 
-                    ThisUser.loginUser();
+                    ThisUser.loginUser(login, password);
                 }
             default:
                 {cout<< "Podaj prawidłowy wybór"<< endl;
