@@ -1,13 +1,26 @@
 #include "swetrki.h"
 #include <iostream>
 using namespace std;
-bool Film::AddReview(Review& r){
-        Reviews.push_back(r);
+bool Film::AddReview(){
+        int rank;
+        string author;
+        string text;    
+        cout<< "Podaj ocenę w skali 1-5"<< endl;
+        cin>> rank;
+        cout << "Napisz treść renezji:"<< endl;
+        cin>> text;
+        cout<< "Podaj autora recenzji:"<< endl;
+        cin>> author;
+        Review r;
+            r.rating = rank;
+            r.text = text;
+            r.author = author;
+            Reviews.push_back(r);
         return true;
 };
 bool Film::RemoveReview(Review& r){
     for(int i=0;i<Reviews.size();i++){
-        if(Reviews[i].autor==r.autor){
+        if(Reviews[i].author==r.author){
             Reviews.erase(Reviews.begin()+i);
             return true;
         }
@@ -20,9 +33,12 @@ bool Film::ViewReviews(){
         return false;
     }
     for (const auto& r : Reviews) {
-        cout << "Autor: " << r.autor 
-             << " | Ocena: " << static_cast<int>(r.rating) 
-             << " | Tresc: " << r.text << endl;
+        cout << "Autor: " << r.author;
+        cout << " | Ocena: " << r.rating<< endl; 
+        cout << " | Tresc: " << r.text << endl;
     }
     return true;
-}
+};
+int Film::getReviewsCount() const {
+    return Reviews.size();
+};

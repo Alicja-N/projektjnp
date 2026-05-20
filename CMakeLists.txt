@@ -16,13 +16,11 @@ set(CMAKE_BUILD_TYPE Debug)
 add_executable(backend
     main.cpp 
     user.cpp 
-    review.cpp 
     functions.cpp
     swetrki.h)
 add_executable(run_tests 
     tests.cpp 
     user.cpp 
-    review.cpp
     functions.cpp
     swetrki.h
 )
