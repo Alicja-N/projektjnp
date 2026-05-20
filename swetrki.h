@@ -33,7 +33,7 @@ public:
     bool isUserAuthenticated() const {
         return isAuthenticated;
     }
-    void loginUser();
+    void loginUser(login, password);
     bool checkAdmin() const;
     string getLogin() const;
 };
