@@ -1,3 +1,5 @@
+#include <vector>
+#include <string>
 using std::vector;
 using std::string;
 //enum class Rank { FATALNY = 1, SLABY = 2, SREDNI = 3, DOBRY = 4,REWELACYJNY = 5};
