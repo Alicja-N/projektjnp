@@ -1,6 +1,10 @@
 #include "swetrki.h"
 #include <iostream>
 using namespace std;
+bool Film::AddReview(const Review& r) {
+    Reviews.push_back(r);
+    return true;
+}
 bool Film::AddReview(){
         int rank;
         string author;
