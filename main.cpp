@@ -19,13 +19,7 @@ int main(){
     bool exists;
     Review r;
 
-    //logowanie
-    cout<<"Login: "<<endl;
-    cin>> login;
-    cout<<"Hasło: "<<endl;
-    cin>> password;
-
-    ThisUser.loginUser();
+    
     // baza filmow - wektor z obiektami klasy Film
     vector<Film> FilmsBase;
     do {
@@ -34,6 +28,7 @@ int main(){
         cout << "1. Wyswietl filmy\n";
         cout << "2. Dodaj nowy film do bazy\n";
         cout << "3.Wyszukaj film\n";
+        cout << "4.Zaloguj się"<< endl;
         cout << "0. Wyjdz\n";
         cout << "Wybor: ";
         cin >> Choice;
@@ -109,10 +104,21 @@ int main(){
                 };
                 break;
                 };
+            case 4:
+                {cout<<"Login: "<<endl;
+                cin>> login;
+                cout<<"Hasło: "<<endl;
+                cin>> password;
+                Thisuser User;
+                    Thisuser.login = login;
+                    Thisuser.password = password; 
+                    ThisUser.loginUser();
+                }
             default:
                 {cout<< "Podaj prawidłowy wybór"<< endl;
                 break;
                 };
+            
 
         }      
     } while (Choice != 0);
