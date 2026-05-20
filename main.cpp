@@ -15,7 +15,9 @@ int main(){
     int Index;
     int Choice2;
     int index;
+    int rindex;
     bool exists;
+    Review r;
 
     //logowanie
     cout<<"Login: "<<endl;
@@ -61,7 +63,11 @@ int main(){
                             FilmsBase[Index].AddReview();
                             break;
                         case 3:
-                            FilmsBase[Index].RemoveReview();
+                            FilmsBase[Index].ViewReviews();
+                            cout << "Podaj indeks recenzji do usunięcia"<< endl;
+                            cin>> rindex;
+                            r = FilmsBase[Index].Reviews[rindex];
+                            FilmsBase[Index].RemoveReview(r);
                             break;
                         default:
                             cout<< "Podaj prawidłowy wybór"<< endl;
