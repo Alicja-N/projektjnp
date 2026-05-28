@@ -1,48 +1,58 @@
 #include "swetrki.h"
 #include <iostream>
 using namespace std;
-bool Film::AddReview(const Review& r) {
-    Reviews.push_back(r);
-    return true;
-}
-bool Film::AddReview(){
-        int rank;
-        string author;
-        string text;    
-        cout<< "Podaj ocenę w skali 1-5"<< endl;
-        cin>> rank;
-        cout << "Napisz treść renezji:"<< endl;
-        cin>> text;
-        cout<< "Podaj autora recenzji:"<< endl;
-        cin>> author;
-        Review r;
-            r.rating = rank;
-            r.text = text;
-            r.author = author;
-            Reviews.push_back(r);
-        return true;
-};
-bool Film::RemoveReview(Review& r){
-    for(int i=0;i<Reviews.size();i++){
-        if(Reviews[i].author==r.author){
-            Reviews.erase(Reviews.begin()+i);
+
+bool VectorStorage::addReview(const Review& r) {
+            allReviews.push_back(r);
             return true;
+}
+
+bool VectorStorage::removeReview(const string& filmTitle, const string& author) {
+    for (auto it = allReviews.begin(); it != allReviews.end(); ++it) {
+        if (it->filmTitle == filmTitle && it->author == author) {
+            allReviews.erase(it);
+            return true; // Usunięto pomyślnie
         }
     }
-    return false;
-};
-bool Film::ViewReviews(){
-    if (Reviews.empty()) {
-        cout << "Brak recenzji dla filmu: " << title << endl;
-        return false;
+    return false; // Nie znaleziono takiej recenzji
+}
+
+vector<Review> VectorStorage::getReviewsForFilm(const string& filmTitle) {
+    vector<Review> filmReviews;
+    for (const auto& r : allReviews) {
+        if (r.filmTitle == filmTitle) {
+            filmReviews.push_back(r);
+        }
     }
-    for (const auto& r : Reviews) {
-        cout << "Autor: " << r.author;
-        cout << " | Ocena: " << r.rating<< endl; 
-        cout << " | Tresc: " << r.text << endl;
+    return filmReviews;
+}
+
+int VectorStorage::getReviewsCount(const string& filmTitle) const {
+    int count = 0;
+    for (const auto& r : allReviews) {
+        if (r.filmTitle == filmTitle) count++;
     }
+    return count;
+}
+
+bool VectorStorage::addFilm(const Film& f) {
+    allFilms.push_back(f);
     return true;
-};
-int Film::getReviewsCount() const {
-    return Reviews.size();
-};
+}
+
+vector<Film> VectorStorage::getAllFilms() {
+    return allFilms;
+}
+
+
+bool VectorStorage::registerUser(const User& u) {
+    allUsers.push_back(u);
+    return true;
+}
+
+User* VectorStorage::findUser(const string& login) {
+    for (auto& u : allUsers) {
+        if (u.login == login) return &u;
+    }
+    return nullptr;
+}
