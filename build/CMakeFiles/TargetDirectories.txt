@@ -1,0 +1,4 @@
+/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/build/CMakeFiles/backend.dir
+/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/build/CMakeFiles/run_tests.dir
+/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/build/CMakeFiles/rebuild_cache.dir

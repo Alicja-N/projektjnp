@@ -13,7 +13,7 @@ TEST(UserTest, Initialization) {
 TEST(UserTest, LoginFunctionality) {
     User u{"user1", "Kowalski"};
     EXPECT_FALSE(u.isUserAuthenticated());
-    u.loginUser();
+    u.loginUser( );
     EXPECT_TRUE(u.isUserAuthenticated());
 }
 

@@ -55,14 +55,33 @@ int main(){
                             FilmsBase[Index].ViewReviews();
                             break;
                         case 2:
-                            FilmsBase[Index].AddReview();
+                            {
+                                int rank;
+                                string author;
+                                string text;
+                                cout<< "Podaj ocenę w skali 1-5"<< endl;
+                                cin>> rank;
+                                cout << "Napisz treść recenzji:"<< endl;
+                                cin>> text;
+                                cout<< "Podaj autora recenzji:"<< endl;
+                                cin>> author;
+                                Review r;
+                                r.rating = rank;
+                                r.text = text;
+                                r.author = author;
+                                FilmsBase[Index].AddReview(r);
+                            }
                             break;
                         case 3:
+<<<<<<< Updated upstream
                             FilmsBase[Index].ViewReviews();
                             cout << "Podaj indeks recenzji do usunięcia"<< endl;
                             cin>> rindex;
                             r = FilmsBase[Index].Reviews[rindex];
                             FilmsBase[Index].RemoveReview(r);
+=======
+                            FilmsBase[Index].RemoveReview(FilmsBase[Index].Reviews[0]);
+>>>>>>> Stashed changes
                             break;
                         default:
                             cout<< "Podaj prawidłowy wybór"<< endl;

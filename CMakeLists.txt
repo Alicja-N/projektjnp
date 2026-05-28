@@ -17,12 +17,11 @@ add_executable(backend
     main.cpp 
     user.cpp 
     functions.cpp
-    swetrki.h)
+)
 add_executable(run_tests 
     tests.cpp 
     user.cpp 
     functions.cpp
-    swetrki.h
 )
 target_include_directories(backend PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(run_tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

@@ -5,14 +5,11 @@
 using namespace std;
 
 
-void User::loginUser() {
-    string inputLogin;
-    cout << "Podaj login: ";
-    cin >> inputLogin;
+void User::loginUser(l, password) {
 
     //Szukamy w administratorach
     for (const User& admin : RegisteredAdmins) {
-        if (admin.login == inputLogin) {
+        if (admin.login == l) {
             this->login = admin.login;
             this->name = admin.name;
             this->isAuthenticated = true;
@@ -24,7 +21,7 @@ void User::loginUser() {
 
     //Szukamy w zwykłych użytkownikach
     for (const User& user : RegisteredUsers) {
-        if (user.login == inputLogin) {
+        if (user.login == l && user.password == p) {
             this->login = user.login;
             this->name = user.name;
             this->isAuthenticated = true;
