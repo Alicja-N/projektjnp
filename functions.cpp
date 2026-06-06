@@ -1,10 +1,6 @@
+using namespace std;
 #include "swetrki.h"
 #include <iostream>
-using namespace std;
-bool Film::AddReview(const Review& r) {
-    Reviews.push_back(r);
-    return true;
-}
 bool Film::AddReview(){
         int rank;
         string author;
@@ -19,19 +15,14 @@ bool Film::AddReview(){
             r.rating = rank;
             r.text = text;
             r.author = author;
-            Reviews.push_back(r);
-        return true;
+            r.filmtitle = this->title;
+        return storage.SaveReview(r);
 };
 bool Film::RemoveReview(Review& r){
-    for(int i=0;i<Reviews.size();i++){
-        if(Reviews[i].author==r.author){
-            Reviews.erase(Reviews.begin()+i);
-            return true;
-        }
-    }
-    return false;
+        return storage.DeleteReview(this->title, r.author);
 };
 bool Film::ViewReviews(){
+    vector<Review> Reviews = storage.getReviewsForFilm(this->title);
     if (Reviews.empty()) {
         cout << "Brak recenzji dla filmu: " << title << endl;
         return false;
@@ -44,5 +35,59 @@ bool Film::ViewReviews(){
     return true;
 };
 int Film::getReviewsCount() const {
-    return Reviews.size();
+    return storage.getReviewsCount(this->title);
 };
+bool VectorStorage::SaveReview(const Review& r) {
+            ReviewsBase.push_back(r);
+            return true;
+}
+
+bool VectorStorage::DeleteReview(const string& filmTitle, const string& author) {
+    for (auto it = ReviewsBase.begin(); it != ReviewsBase.end(); ++it) {
+        if (it->filmtitle == filmTitle && it->author == author) {
+            ReviewsBase.erase(it);
+            return true; // Usunięto pomyślnie
+        }
+    }
+    return false; // Nie znaleziono takiej recenzji
+}
+
+vector<Review> VectorStorage::getReviewsForFilm(const string& filmTitle) {
+    vector<Review> filmReviews;
+    for (const auto& r : ReviewsBase) {
+        if (r.filmtitle == filmTitle) {
+            filmReviews.push_back(r);
+        }
+    }
+    return filmReviews;
+}
+
+int VectorStorage::getReviewsCount(const string& filmTitle) const {
+    int count = 0;
+    for (const auto& r : ReviewsBase) {
+        if (r.filmtitle == filmTitle) count++;
+    }
+    return count;
+}
+
+bool VectorStorage::SaveFilm(const Film& f) {
+    FilmsBase.push_back(f);
+    return true;
+}
+
+vector<Film> VectorStorage::getAllFilms() {
+    return FilmsBase;
+}
+
+
+User* VectorStorage::findUser(const string& login) {
+    for (auto& a : Admins) {
+        if (a.getLogin() == login) return &a; 
+    }
+    for (auto& lu : loggedUsers) {
+        if (lu.getLogin() == login) return &lu;
+    }
+    Viewer* defaultViewer = new Viewer();
+    defaultViewer->setLogin("Gość_" + login); 
+    return defaultViewer;
+}
