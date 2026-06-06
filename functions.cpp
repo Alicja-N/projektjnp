@@ -1,6 +1,8 @@
-using namespace std;
+
 #include "swetrki.h"
 #include <iostream>
+using namespace std;
+VectorStorage storage;
 bool Film::AddReview(){
         int rank;
         string author;
@@ -8,6 +10,8 @@ bool Film::AddReview(){
         cout<< "Podaj ocenę w skali 1-5"<< endl;
         cin>> rank;
         cout << "Napisz treść renezji:"<< endl;
+        cin.ignore();
+        getline(cin, text);
         cin>> text;
         cout<< "Podaj autora recenzji:"<< endl;
         cin>> author;

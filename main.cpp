@@ -14,10 +14,10 @@ int main(){
     string NewTitle;
     string NewKeywords;
     int Choice;
-    int Index;
+    size_t Index;
     int Choice2;
-    int index;
-    int rindex;
+    size_t index;
+    size_t rindex;
     bool exists;
     Review r;
     // testowe
