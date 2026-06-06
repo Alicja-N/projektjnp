@@ -1,34 +1,53 @@
-using namespace std;
+
 #include <iostream>
+using namespace std;
 #include "swetrki.h"
 #include <regex>
 
 int main(){
     //inicjalizuje zmienne
     string login;
+    string rola = "Viewer";
     string password;
-    User ThisUser;
+    User* ThisUser;
     string search;
     string NewTitle;
     string NewKeywords;
     int Choice;
-    int Index;
+    size_t Index;
     int Choice2;
-    int index;
-    int rindex;
+    size_t index;
+    size_t rindex;
     bool exists;
     Review r;
+    // testowe
+    Admin admin1;
+    admin1.setLogin("admin");
+    storage.Admins.push_back(admin1); 
+    Film film1;
+    film1.title = "Shrek";
+    film1.keywords = "ogry,osioł,bagno";
+    storage.SaveFilm(film1);
 
-    
-    // baza filmow - wektor z obiektami klasy Film
-    vector<Film> FilmsBase;
+    //logowanie
+    cout<<"Login: "<<endl;
+    cin>> login;
+    cout<<"Hasło: "<<endl;
+    cin>> password;
+
+    ThisUser = storage.findUser(login);
+    rola = ThisUser->getRole(); 
+    if (ThisUser != nullptr) {
+        cout << "Zalogowano jako: " << ThisUser->getLogin() << " (Rola: " << rola  << ")" << endl;
+    } else {
+    cout << "Nie znaleziono użytkownika!" << endl;
+}
     do {
         cout << "\n--- KNITTED SWEATERS ---\n";
-        cout << "Zalogowany jako: " << ThisUser.getLogin() << endl;
+        cout << "Zalogowany jako: " << ThisUser->getLogin() << endl;
         cout << "1. Wyswietl filmy\n";
         cout << "2. Dodaj nowy film do bazy\n";
-        cout << "3.Wyszukaj film\n";
-        cout << "4.Zaloguj się"<< endl;
+        cout << "3. Wyszukaj film\n";
         cout << "0. Wyjdz\n";
         cout << "Wybor: ";
         cin >> Choice;
@@ -37,79 +56,85 @@ int main(){
         switch (Choice) {
             case 0:
                 break;
-            case 1:
-                {for (int i=0; i<FilmsBase.size(); i++) {
-                    cout<< "Tytuł: "<<FilmsBase[i].title<< endl;
+            case 1:{
+                for (int i=0; i<storage.FilmsBase.size(); i++) {
+                    cout<< "Tytuł: "<<storage.FilmsBase[i].title<< endl;
                 }
                 cout << "wybierz indeks filmu: ";
                 cin >> Index;
-                if (Index >= 0 && Index < FilmsBase.size()) {
-                cout << FilmsBase[Index].title<< endl;
-                cout << FilmsBase[Index].keywords<<endl;
+                if (Index >= 0 && Index < storage.FilmsBase.size()) {
+                cout << storage.FilmsBase[Index].title<< endl;
+                cout << storage.FilmsBase[Index].keywords<<endl;
                 cout << "1.Wyświel recenzje"<<endl;
                 cout << "2.Dodaj recenzje"<<endl;
-                cout << "3.Wyświetl recenzje"<<endl;
+                cout << "3.Usuń recenzje"<<endl;
                 cin >> Choice2;
                     switch(Choice2){
-                        case 1:
-                            FilmsBase[Index].ViewReviews();
+                        case 1:{
+                            storage.FilmsBase[Index].ViewReviews();
                             break;
-                        case 2:
-                            {
-                                int rank;
-                                string author;
-                                string text;
-                                cout<< "Podaj ocenę w skali 1-5"<< endl;
-                                cin>> rank;
-                                cout << "Napisz treść recenzji:"<< endl;
-                                cin>> text;
-                                cout<< "Podaj autora recenzji:"<< endl;
-                                cin>> author;
-                                Review r;
-                                r.rating = rank;
-                                r.text = text;
-                                r.author = author;
-                                FilmsBase[Index].AddReview(r);
+                        };
+                        case 2:{
+                            if (rola != "Viewer"){
+                                storage.FilmsBase[Index].AddReview();
+                            }else{
+                                cout<<  "Możesz tylko wyświetlać recenzje!";
+                            };
+                            break;
+                        };
+                        case 3:{
+                            if (rola != "Viewer"&& rola != "LoggedUser"){
+                                vector<Review> currentReviews = storage.getReviewsForFilm(storage.FilmsBase[Index].title);
+                                if(!currentReviews.empty()) {
+                                    cout << "Podaj indeks recenzji do usunięcia (0 do " << currentReviews.size()-1 << "): " << endl;
+                                    cin >> rindex;
+                                    if(rindex >= 0 && rindex < currentReviews.size()) {
+                                        r = currentReviews[rindex];
+                                        storage.FilmsBase[Index].RemoveReview(r);
+                                    } else {
+                                        cout << "Niepoprawny indeks recenzji." << endl;
+                                    }
+                                } else {
+                                    cout << "Brak recenzji do usunięcia." << endl;
+                                }
+                            } else {
+                                cout<< "Możesz tylko wyświetlać recenzje!";
                             }
                             break;
-                        case 3:
-<<<<<<< Updated upstream
-                            FilmsBase[Index].ViewReviews();
-                            cout << "Podaj indeks recenzji do usunięcia"<< endl;
-                            cin>> rindex;
-                            r = FilmsBase[Index].Reviews[rindex];
-                            FilmsBase[Index].RemoveReview(r);
-=======
-                            FilmsBase[Index].RemoveReview(FilmsBase[Index].Reviews[0]);
->>>>>>> Stashed changes
-                            break;
-                        default:
+                        }
+                        default:{
                             cout<< "Podaj prawidłowy wybór"<< endl;
                             break;
+                        }
                     }
-                }else{
+                 } else {
                     cout<< "niepoprawny indeks"<< endl;
                 }
                 break;
-                };
-            case 2 :
-                {cout << "Podaj tytuł: "<<endl;
-                cin >> NewTitle;
-                cout << "Podaj słowa kluczowe: " << endl;
-                cin >> NewKeywords;
-                Film f1;
-                    f1.title = NewTitle;
-                    f1.keywords = NewKeywords;
-                    FilmsBase.push_back(f1);
+            }
+            case  2 :
+                {if (rola != "Viewer"){
+                    cout << "Podaj tytuł: "<<endl;
+                    cin >> NewTitle;
+                    cout << "Podaj słowa kluczowe: " << endl;
+                    cin >> NewKeywords;
+                    Film f1;
+                        f1.title = NewTitle;
+                        f1.keywords = NewKeywords;
+                        storage.SaveFilm(f1);
+                }else{
+                    cout<<  "Możesz tylko wyświetlać recenzje!";
+                            }
+                
                 break;
-                };
+                    }
             case 3:
                 {exists = false;
                 cout<<"Wyszukaj tytuł filmu lub słowa kluczowe: "<<endl;
                 cin>>search;
-                for (int i=0;i<FilmsBase.size(); i++){
-                    if (FilmsBase[i].title.find(search) != string::npos||FilmsBase[i].keywords.find(search) != string::npos){
-                        cout<< i <<"."<< FilmsBase[i].title<< endl;
+                for (int i=0;i<storage.FilmsBase.size(); i++){
+                    if (storage.FilmsBase[i].title.find(search) != string::npos||storage.FilmsBase[i].keywords.find(search) != string::npos){
+                        cout<< i <<"."<< storage.FilmsBase[i].title<< endl;
                         exists = true;
                     };
                 };
@@ -118,26 +143,15 @@ int main(){
                 }else {
                 cout<<"podaj indeks szukanego filmu: "<<endl;
                 cin>>index;
-                cout<<FilmsBase[index].title<<endl;
-                cout<<FilmsBase[index].keywords<<endl;
+                cout<<storage.FilmsBase[index].title<<endl;
+                cout<<storage.FilmsBase[index].keywords<<endl;
                 };
                 break;
                 };
-            case 4:
-                {cout<<"Login: "<<endl;
-                cin>> login;
-                cout<<"Hasło: "<<endl;
-                cin>> password;
-                Thisuser User;
-                    Thisuser.login = login;
-                    Thisuser.password = password; 
-                    ThisUser.loginUser(login, password);
-                }
             default:
                 {cout<< "Podaj prawidłowy wybór"<< endl;
                 break;
                 };
-            
 
         }      
     } while (Choice != 0);
