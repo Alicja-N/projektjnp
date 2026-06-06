@@ -63,8 +63,8 @@ class VectorStorage {
     public:
         vector<Review> ReviewsBase;
         vector<Film> FilmsBase;
-        vector<User> loggedUsers; 
-        vector<User> Admins;       
+        vector<LoggedUser> loggedUsers; 
+        vector<Admin> Admins;       
         bool SaveReview(const Review& r);
         bool DeleteReview(const string& filmTitle, const string& author);
         vector<Review> getReviewsForFilm(const string& filmTitle);
@@ -72,9 +72,6 @@ class VectorStorage {
         bool SaveFilm(const Film& f);
         vector<Film> getAllFilms();
         User* findUser(const string& login);
-        bool Logged(const LoggedUser& u);
-        bool isAdmin(const Admin& a);
-        bool isViewer(const Viewer& v);
 };
 
 extern VectorStorage storage;

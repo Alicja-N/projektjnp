@@ -20,6 +20,14 @@ int main(){
     int rindex;
     bool exists;
     Review r;
+    // testowe
+    Admin admin1;
+    admin1.setLogin("admin");
+    storage.Admins.push_back(admin1); 
+    Film film1;
+    film1.title = "Shrek";
+    film1.keywords = "ogry,osioł,bagno";
+    storage.SaveFilm(film1);
 
     //logowanie
     cout<<"Login: "<<endl;
@@ -75,7 +83,7 @@ int main(){
                             break;
                         };
                         case 3:{
-                            if (rola != "Viewer"&& rola != "Loggeduser"){
+                            if (rola != "Viewer"&& rola != "LoggedUser"){
                                 vector<Review> currentReviews = storage.getReviewsForFilm(storage.FilmsBase[Index].title);
                                 if(!currentReviews.empty()) {
                                     cout << "Podaj indeks recenzji do usunięcia (0 do " << currentReviews.size()-1 << "): " << endl;
@@ -98,13 +106,14 @@ int main(){
                             cout<< "Podaj prawidłowy wybór"<< endl;
                             break;
                         }
-                    } else {
+                    }
+                 } else {
                     cout<< "niepoprawny indeks"<< endl;
                 }
                 break;
             }
             case  2 :
-                if (rola != "Viewer"){
+                {if (rola != "Viewer"){
                     cout << "Podaj tytuł: "<<endl;
                     cin >> NewTitle;
                     cout << "Podaj słowa kluczowe: " << endl;
@@ -118,6 +127,7 @@ int main(){
                             }
                 
                 break;
+                    }
             case 3:
                 {exists = false;
                 cout<<"Wyszukaj tytuł filmu lub słowa kluczowe: "<<endl;
