@@ -17,7 +17,7 @@ set(CMAKE_BUILD_TYPE Debug)
 add_executable(backend
     main.cpp 
     functions.cpp
-
+)
 
 add_executable(run_tests 
     tests.cpp 

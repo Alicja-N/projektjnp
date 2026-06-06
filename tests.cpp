@@ -1,6 +1,4 @@
 
-
-C++
 #include <gtest/gtest.h>
 #include "swetrki.h"
 
@@ -32,7 +30,8 @@ TEST(VectorStorageTest, FindExistingAdmin) {
 
     ASSERT_NE(found, nullptr);          // Sprawdzamy czy w ogóle coś znalazł
     EXPECT_EQ(found->getLogin(), "super_admin");
-    EXPECT_EQ(found->getRole(), "Admin");
+    std::string role = found->getRole();
+    EXPECT_EQ(role, "Admin");
 }
 
 // Test 3: Sprawdzenie mechanizmu "Gościa" (Viewer) przy braku loginu
@@ -44,7 +43,8 @@ TEST(VectorStorageTest, ReturnsDefaultViewerWhenUserNotFound) {
     User* found = storage.findUser("nieznany_gosc");
 
     ASSERT_NE(found, nullptr);          // Nie powinno zwrócić nullptr, tylko obiekt
-    EXPECT_EQ(found->getRole(), "Viewer");
+    std::string guestRole = found->getRole();
+    EXPECT_EQ(guestRole, "Viewer");
     EXPECT_EQ(found->getLogin(), "Gość_nieznany_gosc");
 
     // Ponieważ funkcja findUser tworzy w tym przypadku obiekt przez 'new', 

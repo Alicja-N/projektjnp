@@ -3,6 +3,8 @@
 using namespace std;
 #include "swetrki.h"
 #include <regex>
+#include <cstddef>   
+#include <string>    
 
 int main(){
     //inicjalizuje zmienne
