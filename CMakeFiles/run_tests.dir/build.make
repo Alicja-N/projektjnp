@@ -69,10 +69,31 @@ include CMakeFiles/run_tests.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/run_tests.dir/flags.make
 
+run_tests_autogen/timestamp: /usr/lib/qt5/bin/moc
+run_tests_autogen/timestamp: /usr/lib/qt5/bin/uic
+run_tests_autogen/timestamp: CMakeFiles/run_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target run_tests"
+	/usr/bin/cmake -E cmake_autogen /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles/run_tests_autogen.dir/AutogenInfo.json Debug
+	/usr/bin/cmake -E touch /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/run_tests_autogen/timestamp
+
+CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o: CMakeFiles/run_tests.dir/flags.make
+CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o: run_tests_autogen/mocs_compilation.cpp
+CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o: CMakeFiles/run_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o -MF CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o -c /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/run_tests_autogen/mocs_compilation.cpp
+
+CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/run_tests_autogen/mocs_compilation.cpp > CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.i
+
+CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/run_tests_autogen/mocs_compilation.cpp -o CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.s
+
 CMakeFiles/run_tests.dir/tests.cpp.o: CMakeFiles/run_tests.dir/flags.make
 CMakeFiles/run_tests.dir/tests.cpp.o: tests.cpp
 CMakeFiles/run_tests.dir/tests.cpp.o: CMakeFiles/run_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/run_tests.dir/tests.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/run_tests.dir/tests.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_tests.dir/tests.cpp.o -MF CMakeFiles/run_tests.dir/tests.cpp.o.d -o CMakeFiles/run_tests.dir/tests.cpp.o -c /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/tests.cpp
 
 CMakeFiles/run_tests.dir/tests.cpp.i: cmake_force
@@ -86,7 +107,7 @@ CMakeFiles/run_tests.dir/tests.cpp.s: cmake_force
 CMakeFiles/run_tests.dir/functions.cpp.o: CMakeFiles/run_tests.dir/flags.make
 CMakeFiles/run_tests.dir/functions.cpp.o: functions.cpp
 CMakeFiles/run_tests.dir/functions.cpp.o: CMakeFiles/run_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/run_tests.dir/functions.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/run_tests.dir/functions.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_tests.dir/functions.cpp.o -MF CMakeFiles/run_tests.dir/functions.cpp.o.d -o CMakeFiles/run_tests.dir/functions.cpp.o -c /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/functions.cpp
 
 CMakeFiles/run_tests.dir/functions.cpp.i: cmake_force
@@ -99,19 +120,21 @@ CMakeFiles/run_tests.dir/functions.cpp.s: cmake_force
 
 # Object files for target run_tests
 run_tests_OBJECTS = \
+"CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/run_tests.dir/tests.cpp.o" \
 "CMakeFiles/run_tests.dir/functions.cpp.o"
 
 # External object files for target run_tests
 run_tests_EXTERNAL_OBJECTS =
 
+run_tests: CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o
 run_tests: CMakeFiles/run_tests.dir/tests.cpp.o
 run_tests: CMakeFiles/run_tests.dir/functions.cpp.o
 run_tests: CMakeFiles/run_tests.dir/build.make
 run_tests: /usr/lib/x86_64-linux-gnu/libgtest_main.a
 run_tests: /usr/lib/x86_64-linux-gnu/libgtest.a
 run_tests: CMakeFiles/run_tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable run_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable run_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/run_tests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -122,7 +145,7 @@ CMakeFiles/run_tests.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/run_tests.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/run_tests.dir/clean
 
-CMakeFiles/run_tests.dir/depend:
+CMakeFiles/run_tests.dir/depend: run_tests_autogen/timestamp
 	cd /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles/run_tests.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/run_tests.dir/depend
 

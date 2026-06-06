@@ -4,7 +4,7 @@
 #include <cstddef>   
 #include <string>    
 
-VectorStorage storage;
+
 bool Film::AddReview(){
         int rank;
         std::string author;

@@ -8,8 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "" "backend_autogen/timestamp" "custom" "backend_autogen/deps"
+  "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/backend_autogen/mocs_compilation.cpp" "CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o.d"
   "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/functions.cpp" "CMakeFiles/backend.dir/functions.cpp.o" "gcc" "CMakeFiles/backend.dir/functions.cpp.o.d"
   "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/main.cpp" "CMakeFiles/backend.dir/main.cpp.o" "gcc" "CMakeFiles/backend.dir/main.cpp.o.d"
+  "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/mainwindow.cpp" "CMakeFiles/backend.dir/mainwindow.cpp.o" "gcc" "CMakeFiles/backend.dir/mainwindow.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

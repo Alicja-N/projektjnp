@@ -8,7 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "" "run_tests_autogen/timestamp" "custom" "run_tests_autogen/deps"
   "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/functions.cpp" "CMakeFiles/run_tests.dir/functions.cpp.o" "gcc" "CMakeFiles/run_tests.dir/functions.cpp.o.d"
+  "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/run_tests_autogen/mocs_compilation.cpp" "CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o.d"
   "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/tests.cpp" "CMakeFiles/run_tests.dir/tests.cpp.o" "gcc" "CMakeFiles/run_tests.dir/tests.cpp.o.d"
   )
 

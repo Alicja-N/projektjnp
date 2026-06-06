@@ -1,10 +1,17 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/run_tests_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/run_tests_autogen.dir/ParseCache.txt"
+  "run_tests_autogen"
   "CMakeFiles/run_tests.dir/functions.cpp.o"
   "CMakeFiles/run_tests.dir/functions.cpp.o.d"
+  "CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/run_tests.dir/run_tests_autogen/mocs_compilation.cpp.o.d"
   "CMakeFiles/run_tests.dir/tests.cpp.o"
   "CMakeFiles/run_tests.dir/tests.cpp.o.d"
   "run_tests"
   "run_tests.pdb"
+  "run_tests_autogen/mocs_compilation.cpp"
+  "run_tests_autogen/timestamp"
 )
 
 # Per-language clean rules from dependency scanning.

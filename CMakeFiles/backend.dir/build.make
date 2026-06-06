@@ -69,10 +69,31 @@ include CMakeFiles/backend.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/backend.dir/flags.make
 
+backend_autogen/timestamp: /usr/lib/qt5/bin/moc
+backend_autogen/timestamp: /usr/lib/qt5/bin/uic
+backend_autogen/timestamp: CMakeFiles/backend.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target backend"
+	/usr/bin/cmake -E cmake_autogen /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles/backend_autogen.dir/AutogenInfo.json Debug
+	/usr/bin/cmake -E touch /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/backend_autogen/timestamp
+
+CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o: CMakeFiles/backend.dir/flags.make
+CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o: backend_autogen/mocs_compilation.cpp
+CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o: CMakeFiles/backend.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o -MF CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o -c /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/backend_autogen/mocs_compilation.cpp
+
+CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/backend_autogen/mocs_compilation.cpp > CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.i
+
+CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/backend_autogen/mocs_compilation.cpp -o CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.s
+
 CMakeFiles/backend.dir/main.cpp.o: CMakeFiles/backend.dir/flags.make
 CMakeFiles/backend.dir/main.cpp.o: main.cpp
 CMakeFiles/backend.dir/main.cpp.o: CMakeFiles/backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/backend.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/backend.dir/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backend.dir/main.cpp.o -MF CMakeFiles/backend.dir/main.cpp.o.d -o CMakeFiles/backend.dir/main.cpp.o -c /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/main.cpp
 
 CMakeFiles/backend.dir/main.cpp.i: cmake_force
@@ -86,7 +107,7 @@ CMakeFiles/backend.dir/main.cpp.s: cmake_force
 CMakeFiles/backend.dir/functions.cpp.o: CMakeFiles/backend.dir/flags.make
 CMakeFiles/backend.dir/functions.cpp.o: functions.cpp
 CMakeFiles/backend.dir/functions.cpp.o: CMakeFiles/backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/backend.dir/functions.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/backend.dir/functions.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backend.dir/functions.cpp.o -MF CMakeFiles/backend.dir/functions.cpp.o.d -o CMakeFiles/backend.dir/functions.cpp.o -c /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/functions.cpp
 
 CMakeFiles/backend.dir/functions.cpp.i: cmake_force
@@ -97,19 +118,40 @@ CMakeFiles/backend.dir/functions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/backend.dir/functions.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/functions.cpp -o CMakeFiles/backend.dir/functions.cpp.s
 
+CMakeFiles/backend.dir/mainwindow.cpp.o: CMakeFiles/backend.dir/flags.make
+CMakeFiles/backend.dir/mainwindow.cpp.o: mainwindow.cpp
+CMakeFiles/backend.dir/mainwindow.cpp.o: CMakeFiles/backend.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/backend.dir/mainwindow.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/backend.dir/mainwindow.cpp.o -MF CMakeFiles/backend.dir/mainwindow.cpp.o.d -o CMakeFiles/backend.dir/mainwindow.cpp.o -c /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/mainwindow.cpp
+
+CMakeFiles/backend.dir/mainwindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/backend.dir/mainwindow.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/mainwindow.cpp > CMakeFiles/backend.dir/mainwindow.cpp.i
+
+CMakeFiles/backend.dir/mainwindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/backend.dir/mainwindow.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/mainwindow.cpp -o CMakeFiles/backend.dir/mainwindow.cpp.s
+
 # Object files for target backend
 backend_OBJECTS = \
+"CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/backend.dir/main.cpp.o" \
-"CMakeFiles/backend.dir/functions.cpp.o"
+"CMakeFiles/backend.dir/functions.cpp.o" \
+"CMakeFiles/backend.dir/mainwindow.cpp.o"
 
 # External object files for target backend
 backend_EXTERNAL_OBJECTS =
 
+backend: CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o
 backend: CMakeFiles/backend.dir/main.cpp.o
 backend: CMakeFiles/backend.dir/functions.cpp.o
+backend: CMakeFiles/backend.dir/mainwindow.cpp.o
 backend: CMakeFiles/backend.dir/build.make
+backend: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.13
+backend: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.13
+backend: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.13
 backend: CMakeFiles/backend.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable backend"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable backend"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/backend.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -120,7 +162,7 @@ CMakeFiles/backend.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/backend.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/backend.dir/clean
 
-CMakeFiles/backend.dir/depend:
+CMakeFiles/backend.dir/depend: backend_autogen/timestamp
 	cd /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp /mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles/backend.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/backend.dir/depend
 

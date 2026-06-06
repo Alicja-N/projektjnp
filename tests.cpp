@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 #include "swetrki.h"
 
+VectorStorage storage;
 // Test 1: Sprawdzenie, czy nowy film poprawnie zapisuje się w bazie
 TEST(VectorStorageTest, SaveFilmCorrectly) {
     // Czyszczenie bazy przed testem (dobra praktyka)

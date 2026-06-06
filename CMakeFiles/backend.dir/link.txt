@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/backend.dir/main.cpp.o CMakeFiles/backend.dir/functions.cpp.o -o backend 
+/usr/bin/c++ -g CMakeFiles/backend.dir/backend_autogen/mocs_compilation.cpp.o CMakeFiles/backend.dir/main.cpp.o CMakeFiles/backend.dir/functions.cpp.o CMakeFiles/backend.dir/mainwindow.cpp.o -o backend  /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.13 /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.13 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.13 
