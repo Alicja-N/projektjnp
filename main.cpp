@@ -22,13 +22,13 @@ int main(int argc, char *argv[]) {
     // --- Dane testowe (przeniesione z Twojego maina) ---
     Admin admin1;
     admin1.setLogin("admin");
-    storage.Admins.push_back(admin1); 
+    storage.Admins.push_back(admin); 
 
     LoggedUser user1;
     user1.setLogin("user1");
     storage.loggedUsers.push_back(user1);
 
-    WczytajFilmyZPliku("filmy.txt");
+    storage.getAllFilms(); // To bezpiecznie załaduje filmy do bazy bez zapętlenia pliku!
 
     // --- GŁÓWNE OKNO I STOS WIDOKÓW ---
     QWidget mainWindow;

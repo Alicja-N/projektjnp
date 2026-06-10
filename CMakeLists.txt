@@ -24,6 +24,7 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 add_executable(backend
     main.cpp 
     functions.cpp
+    mainwindow.cpp
 )
 
 add_executable(run_tests 

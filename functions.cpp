@@ -145,12 +145,43 @@ int VectorStorage::getReviewsCount(const std::string& filmTitle) const {
     return count;
 }
 
+
 bool VectorStorage::SaveFilm(const Film& f) {
-    FilmsBase.push_back(f);
+    // Otwieramy plik w trybie dopisywania
+    std::ofstream plik("filmy.txt", std::ios::app);
+    if (!plik.is_open()) return false;
+
+    plik << f.title << ";" << f.keywords << "\n";
+    plik.close();
     return true;
 }
 
 std::vector<Film> VectorStorage::getAllFilms() {
+    // Czyścimy stary stan w pamięci, żeby nie dublować filmów
+    FilmsBase.clear();
+
+    std::ifstream plik("filmy.txt");
+    if (!plik.is_open()) {
+        return FilmsBase; // Zwraca pusty wektor, jeśli plik nie istnieje
+    }
+
+    std::string linia;
+    while (std::getline(plik, linia)) {
+        if (linia.empty()) continue;
+
+        std::stringstream ss(linia);
+        std::string tytul;
+        std::string slowaKluczowe;
+
+        if (std::getline(ss, tytul, ';') && std::getline(ss, slowaKluczowe)) {
+            Film f;
+            f.title = tytul;
+            f.keywords = slowaKluczowe;
+            FilmsBase.push_back(f);
+        }
+    }
+
+    plik.close();
     return FilmsBase;
 }
 
