@@ -8,7 +8,7 @@
 #include <vector>
 #include <cstddef>   
 
-//enum class Rank { FATALNY = 1, SLABY = 2, SREDNI = 3, DOBRY = 4,REWELACYJNY = 5};
+;
 class Review{
 public:
     int id;
@@ -33,7 +33,7 @@ protected:
     std::string login;
     std::string name;
 public:
-    virtual ~User() = default; // idk to trzeba dac do klasy abstrakcyjnej z jakiegos powodu
+    virtual ~User() = default; 
     
     std::string getLogin() const { return login; }// getter- odczytuje ukryty login uzytkowanika
     void setLogin(std::string l) { login = l; }// setter - zmiana loginu
