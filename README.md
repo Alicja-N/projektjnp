@@ -1,3 +1,0 @@
-# projektjnp
-# projektjnp
-# projektjnp
