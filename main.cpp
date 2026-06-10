@@ -13,13 +13,13 @@
 
 #include "swetrki.h"
 
-// Definicja globalnego obiektu bazy danych
+
 VectorStorage storage;
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    // --- Dane testowe (przeniesione z Twojego maina) ---
+    
     Admin admin1;
     admin1.setLogin("admin");
     storage.Admins.push_back(admin); 
@@ -28,9 +28,9 @@ int main(int argc, char *argv[]) {
     user1.setLogin("user1");
     storage.loggedUsers.push_back(user1);
 
-    storage.getAllFilms(); // To bezpiecznie załaduje filmy do bazy bez zapętlenia pliku!
+    storage.getAllFilms();
 
-    // --- GŁÓWNE OKNO I STOS WIDOKÓW ---
+    
     QWidget mainWindow;
     mainWindow.setWindowTitle("Knitted Sweaters - Recenzje Filmowe");
     mainWindow.resize(600, 500);
@@ -39,13 +39,11 @@ int main(int argc, char *argv[]) {
     QVBoxLayout *mainLayout = new QVBoxLayout(&mainWindow);
     mainLayout->addWidget(stackedWidget);
 
-    // Wskaźnik na zalogowanego użytkownika i jego rolę (będą ustawione po zalogowaniu)
+    
     static User* currentUser = nullptr;
     static std::string userRole = "Viewer";
 
-    // ==========================================
-    // STREFA 1: WIDOK LOGOWANIA (Login Screen)
-    // ==========================================
+    //widok logowania
     QWidget *loginPage = new QWidget();
     QVBoxLayout *loginLayout = new QVBoxLayout(loginPage);
 
@@ -64,16 +62,14 @@ int main(int argc, char *argv[]) {
     loginLayout->addWidget(loginButton);
     stackedWidget->addWidget(loginPage);
 
-    // ==========================================
-    // STREFA 2: WIDOK GŁÓWNY (Main Menu & App)
-    // ==========================================
+    //ekran główny
     QWidget *appPage = new QWidget();
     QVBoxLayout *appLayout = new QVBoxLayout(appPage);
 
     QLabel *welcomeLabel = new QLabel();
     appLayout->addWidget(welcomeLabel);
 
-    // Pole wyszukiwania (odpowiednik Case 3 z Twojego kodu)
+    // wyszukiwanie
     QHBoxLayout *searchLayout = new QHBoxLayout();
     QLineEdit *searchInput = new QLineEdit();
     searchInput->setPlaceholderText("Wyszukaj tytuł lub słowa kluczowe...");
@@ -82,7 +78,7 @@ int main(int argc, char *argv[]) {
     searchLayout->addWidget(searchButton);
     appLayout->addLayout(searchLayout);
 
-    // Lista filmów (odpowiednik Case 1)
+    // Lista filmów
     QListWidget *filmListWidget = new QListWidget();
     appLayout->addWidget(new QLabel("<h3>Lista filmów:</h3>"));
     appLayout->addWidget(filmListWidget);
@@ -104,31 +100,28 @@ int main(int argc, char *argv[]) {
 
     stackedWidget->addWidget(appPage);
 
-    // --- FUNKCJA POMOCNICZA: Odświeżanie listy filmów ---
+    //odswiezanie listy filmów
     auto refreshFilmList = [&](const std::string &filter = "") {
         filmListWidget->clear();
         for (size_t i = 0; i < storage.FilmsBase.size(); ++i) {
             const auto &film = storage.FilmsBase[i];
-            // Jeśli szukamy, sprawdzamy czy pasuje do tytułu lub słów kluczowych
             if (filter.empty() || 
                 film.title.find(filter) != std::string::npos || 
                 film.keywords.find(filter) != std::string::npos) {
                 
                 QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(film.title));
-                item->setData(Qt::UserRole, QVariant::fromValue(i)); // Zapamiętujemy oryginalny indeks filmu
+                item->setData(Qt::UserRole, QVariant::fromValue(i)); 
                 filmListWidget->addItem(item);
             }
         }
     };
 
-    // ==========================================
-    // LOGIKA (Sygnały i Sloty za pomocą Lambd)
-    // ==========================================
+    
 
-    // Obsługa kliknięcia "Zaloguj się"
+    // klikniecie zaloguj sie
     QObject::connect(loginButton, &QPushButton::clicked, [&]() {
         std::string login = loginInput->text().toStdString();
-        // Zmienna passwordInput jest dostępna, w razie potrzeby można przekazać do weryfikacji
+      
 
         currentUser = storage.findUser(login);
         if (currentUser != nullptr) {
@@ -137,7 +130,6 @@ int main(int argc, char *argv[]) {
                                   .arg(QString::fromStdString(currentUser->getLogin()))
                                   .arg(QString::fromStdString(userRole)));
             
-            // Czyszczenie pól i przejście do aplikacji
             loginInput->clear();
             passwordInput->clear();
             refreshFilmList();
@@ -147,19 +139,19 @@ int main(int argc, char *argv[]) {
         }
     });
 
-    // Obsługa wyszukiwania (Case 3)
+    // wyszukiwanie
     QObject::connect(searchButton, &QPushButton::clicked, [&]() {
         refreshFilmList(searchInput->text().toStdString());
     });
 
-    // Obsługa kliknięcia na film (wyświetlenie szczegółów/słów kluczowych w dymku)
+    // klikniecie na film
     QObject::connect(filmListWidget, &QListWidget::itemClicked, [&](QListWidgetItem *item) {
         size_t index = item->data(Qt::UserRole).toUInt();
         std::string info = "Tytuł: " + storage.FilmsBase[index].title + "\nSłowa kluczowe: " + storage.FilmsBase[index].keywords;
         QMessageBox::information(&mainWindow, "Informacje o filmie", QString::fromStdString(info));
     });
 
-    // Dodawanie nowego filmu (Case 2)
+    // Dodawanie nowego filmu 
     QObject::connect(addFilmButton, &QPushButton::clicked, [&]() {
         if (userRole == "Viewer") {
             QMessageBox::critical(&mainWindow, "Brak uprawnień", "Twój status to Viewer. Możesz tylko wyświetlać dane!");
@@ -182,7 +174,7 @@ int main(int argc, char *argv[]) {
         QMessageBox::information(&mainWindow, "Sukces", "Film został dodany do bazy.");
     });
 
-    // Wyświetlanie recenzji (Case 1 -> Choice2 == 1)
+    // Wyświetlanie recenzji 
     QObject::connect(viewReviewsButton, &QPushButton::clicked, [&]() {
         QListWidgetItem *selected = filmListWidget->currentItem();
         if (!selected) {
@@ -191,12 +183,11 @@ int main(int argc, char *argv[]) {
         }
         size_t index = selected->data(Qt::UserRole).toUInt();
         
-        // Wywołujemy Twoją funkcję z logiką backendową
         storage.FilmsBase[index].ViewReviews(); 
         
     });
 
-    // Dodawanie recenzji (Case 1 -> Choice2 == 2)
+    // Dodawanie recenzj
     QObject::connect(addReviewButton, &QPushButton::clicked, [&]() {
         if (userRole == "Viewer") {
             QMessageBox::critical(&mainWindow, "Brak uprawnień", "Możesz tylko wyświetlać recenzje!");
@@ -209,8 +200,6 @@ int main(int argc, char *argv[]) {
         }
         size_t index = selected->data(Qt::UserRole).toUInt();
 
-        // Wywołanie Twojej metody interaktywnej z klasy Film
-        // Nowe wywołanie – przekazujemy login aktualnie zalogowanego użytkownika
         std::string authorLogin = "";
         if (currentUser != nullptr) {
             authorLogin = currentUser->getLogin();
@@ -219,7 +208,7 @@ int main(int argc, char *argv[]) {
         storage.FilmsBase[index].AddReview(authorLogin);
     });
 
-    // Usuwanie recenzji (Case 1 -> Choice2 == 3)
+    // Usuwanie recenzji
     QObject::connect(deleteReviewButton, &QPushButton::clicked, [&]() {
         if (userRole == "Viewer" || userRole == "LoggedUser") {
             QMessageBox::critical(&mainWindow, "Brak uprawnień", "Możesz tylko wyświetlać recenzje!");
@@ -259,7 +248,7 @@ int main(int argc, char *argv[]) {
         }
     });
 
-    // Przycisk wylogowania (powrót do widoku logowania)
+    // wylogowanie
     QObject::connect(logoutButton, &QPushButton::clicked, [&]() {
         currentUser = nullptr;
         userRole = "Viewer";
