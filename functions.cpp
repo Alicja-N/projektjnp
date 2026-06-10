@@ -24,21 +24,20 @@ void WczytajFilmyZPliku(const std::string& nazwaPliku) {
     }
 
     std::string linia;
-    // Czytamy plik linijka po linijce
     while (std::getline(plik, linia)) {
-        if (linia.empty()) continue; // Pomijaj puste linie
+        if (linia.empty()) continue;
 
         std::stringstream ss(linia);
         std::string tytul;
         std::string slowaKluczowe;
 
-        // Rozdzielamy tekst za pomocą średnika ';'
+        
         if (std::getline(ss, tytul, ';') && std::getline(ss, slowaKluczowe)) {
             Film f;
             f.title = tytul;
             f.keywords = slowaKluczowe;
             
-            // Zapisujemy wczytany film do bazy danych
+            
             storage.SaveFilm(f);
         }
     }
@@ -61,17 +60,17 @@ bool Film::AddReview(const std::string& loggedInUser) {
                                                    "", &okText);
     if (!okText || qText.isEmpty()) return false;
 
-    // 3. Automatyczne przypisanie autora (zamiast QInputDialog)
+    // 3. Automatyczne przypisanie autora
     std::string author = loggedInUser;
     if (author.empty()) {
-        author = "Anonim"; // Zabezpieczenie, gdyby funkcja została wywołana bez podania usera (np. w testach)
+        author = "Anonim"; 
     }
 
-    // 4. Przepisanie danych do struktury recenzji
+    
     Review r;
     r.rating = rank;
     r.text = qText.toStdString();
-    r.author = author; // Przypisanie automatycznego autora
+    r.author = author; 
     r.filmtitle = this->title;
 
     // 5. Zapis i komunikat
@@ -121,10 +120,10 @@ bool VectorStorage::DeleteReview(const std::string& filmTitle, const std::string
     for (auto it = ReviewsBase.begin(); it != ReviewsBase.end(); ++it) {
         if (it->filmtitle == filmTitle && it->author == author) {
             ReviewsBase.erase(it);
-            return true; // Usunięto pomyślnie
+            return true; 
         }
     }
-    return false; // Nie znaleziono takiej recenzji
+    return false;
 }
 
 std::vector<Review> VectorStorage::getReviewsForFilm(const std::string& filmTitle) {
@@ -147,7 +146,6 @@ int VectorStorage::getReviewsCount(const std::string& filmTitle) const {
 
 
 bool VectorStorage::SaveFilm(const Film& f) {
-    // Otwieramy plik w trybie dopisywania
     std::ofstream plik("filmy.txt", std::ios::app);
     if (!plik.is_open()) return false;
 
@@ -157,12 +155,11 @@ bool VectorStorage::SaveFilm(const Film& f) {
 }
 
 std::vector<Film> VectorStorage::getAllFilms() {
-    // Czyścimy stary stan w pamięci, żeby nie dublować filmów
     FilmsBase.clear();
 
     std::ifstream plik("filmy.txt");
     if (!plik.is_open()) {
-        return FilmsBase; // Zwraca pusty wektor, jeśli plik nie istnieje
+        return FilmsBase; 
     }
 
     std::string linia;
