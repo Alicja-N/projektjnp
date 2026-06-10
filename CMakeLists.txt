@@ -24,7 +24,6 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 add_executable(backend
     main.cpp 
     functions.cpp
-    mainwindow.cpp
 )
 
 add_executable(run_tests 
@@ -38,5 +37,10 @@ target_include_directories(run_tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 find_package(GTest REQUIRED)
 
 target_link_libraries(backend PRIVATE Qt5::Widgets)
+target_link_libraries(run_tests PRIVATE GTest::gtest_main Qt5::Widgets)
 
-target_link_libraries(run_tests GTest::gtest_main)
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/filmy.txt"
+    "${CMAKE_CURRENT_BINARY_DIR}/filmy.txt"
+    COPYONLY
+)

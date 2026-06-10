@@ -23,7 +23,7 @@ public:
     int id;
     std::string title;
     std::string keywords;
-    bool AddReview();
+    bool AddReview(const std::string& loggedInUser = "");
     bool RemoveReview(Review& r);
     bool ViewReviews();
     int getReviewsCount() const;
@@ -81,4 +81,7 @@ class VectorStorage {
 };
 
 extern VectorStorage storage;
+
+void WczytajFilmyZPliku(const std::string& nazwaPliku);
+
 #endif

@@ -80,7 +80,8 @@
 		"/usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake",
 		"/usr/share/cmake-3.28/Modules/FindPackageMessage.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets.cmake",
-		"/usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets-none.cmake"
+		"/usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets-none.cmake",
+		"/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/filmy.txt"
 	],
 	"CMAKE_SOURCE_DIR" : "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp",
 	"DEP_FILE" : "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/run_tests_autogen/deps",
@@ -89,7 +90,7 @@
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/run_tests_autogen/include",
 	"MOC_COMPILATION_FILE" : "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/run_tests_autogen/mocs_compilation.cpp",
-	"MOC_DEFINITIONS" : [],
+	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_WIDGETS_LIB" ],
 	"MOC_DEPEND_FILTERS" : 
 	[
 		[
@@ -100,6 +101,11 @@
 	"MOC_INCLUDES" : 
 	[
 		"/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp",
+		"/usr/include/x86_64-linux-gnu/qt5",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore",
+		"/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++",
 		"/usr/include",
 		"/usr/include/c++/13",
 		"/usr/include/x86_64-linux-gnu/c++/13",

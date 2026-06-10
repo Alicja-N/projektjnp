@@ -2,6 +2,7 @@ run_tests_autogen/timestamp: \
 	/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles/3.28.3/CMakeCXXCompiler.cmake \
 	/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles/3.28.3/CMakeSystem.cmake \
 	/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeLists.txt \
+	/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/filmy.txt \
 	/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/functions.cpp \
 	/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/tests.cpp \
 	/usr/lib/x86_64-linux-gnu/cmake/GTest/GTestConfig.cmake \

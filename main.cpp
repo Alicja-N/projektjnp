@@ -24,10 +24,11 @@ int main(int argc, char *argv[]) {
     admin1.setLogin("admin");
     storage.Admins.push_back(admin1); 
 
-    Film film1;
-    film1.title = "Shrek";
-    film1.keywords = "ogry,osioł,bagno";
-    storage.SaveFilm(film1);
+    LoggedUser user1;
+    user1.setLogin("user1");
+    storage.loggedUsers.push_back(user1);
+
+    WczytajFilmyZPliku("filmy.txt");
 
     // --- GŁÓWNE OKNO I STOS WIDOKÓW ---
     QWidget mainWindow;
@@ -192,7 +193,7 @@ int main(int argc, char *argv[]) {
         
         // Wywołujemy Twoją funkcję z logiką backendową
         storage.FilmsBase[index].ViewReviews(); 
-        QMessageBox::information(&mainWindow, "Recenzje", "Lista recenzji została wysłana na standardowe wyjście (konsolę/debug).");
+        
     });
 
     // Dodawanie recenzji (Case 1 -> Choice2 == 2)
@@ -209,7 +210,13 @@ int main(int argc, char *argv[]) {
         size_t index = selected->data(Qt::UserRole).toUInt();
 
         // Wywołanie Twojej metody interaktywnej z klasy Film
-        storage.FilmsBase[index].AddReview();
+        // Nowe wywołanie – przekazujemy login aktualnie zalogowanego użytkownika
+        std::string authorLogin = "";
+        if (currentUser != nullptr) {
+            authorLogin = currentUser->getLogin();
+        }
+
+        storage.FilmsBase[index].AddReview(authorLogin);
     });
 
     // Usuwanie recenzji (Case 1 -> Choice2 == 3)

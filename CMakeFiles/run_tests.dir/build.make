@@ -132,7 +132,10 @@ run_tests: CMakeFiles/run_tests.dir/tests.cpp.o
 run_tests: CMakeFiles/run_tests.dir/functions.cpp.o
 run_tests: CMakeFiles/run_tests.dir/build.make
 run_tests: /usr/lib/x86_64-linux-gnu/libgtest_main.a
+run_tests: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.13
 run_tests: /usr/lib/x86_64-linux-gnu/libgtest.a
+run_tests: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.13
+run_tests: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.13
 run_tests: CMakeFiles/run_tests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable run_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/run_tests.dir/link.txt --verbose=$(VERBOSE)

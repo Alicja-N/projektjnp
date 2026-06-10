@@ -80,7 +80,8 @@
 		"/usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake",
 		"/usr/share/cmake-3.28/Modules/FindPackageMessage.cmake",
 		"/usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets.cmake",
-		"/usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets-none.cmake"
+		"/usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets-none.cmake",
+		"/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/filmy.txt"
 	],
 	"CMAKE_SOURCE_DIR" : "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp",
 	"DEP_FILE" : "/mnt/c/Users/alicj/OneDrive/Desktop/JiNP/projektjnp/backend_autogen/deps",
